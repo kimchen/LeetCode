@@ -1,7 +1,9 @@
-package com.kimchen;
+package kimchen.leetcode;
 
 public class Main {
 	public static void main(String[] args) {
-		SearchA2DMatrix temp = new SearchA2DMatrix();
+		System.out.println("start");
+		
+		ZigZagConversion temp = new ZigZagConversion();
 	}
 }
