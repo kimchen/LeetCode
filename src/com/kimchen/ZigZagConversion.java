@@ -1,42 +1,41 @@
-package kimchen.leetcode;
+package com.kimchen;
 
+import com.sun.corba.se.impl.copyobject.ORBStreamObjectCopierImpl;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ZigZagConversion {
-	public ZigZagConversion(){
-		System.out.println(convert("PAYPALISHIRING",3));
-	}
-	public String convert(String s, int nRows) {
-		String res = "";
-		char[] chars = s.toCharArray();
-		int count = nRows-2;
-		if(count<0)
-			count = 0;
-		int index = 0;
-		List<Character[]> lists = new ArrayList<Character[]>();
-		for(int i=0;i<chars.length;i++){
-			Character[] cs = new Character[nRows];
-			int temp = index%count;
-			if(temp == 0){
-				for(int j=0;j<nRows;j++){
-					if(i+j < chars.length)
-						cs[j] = chars[i+j];
-				}
-				i+=nRows-1;
-			}else{
-				cs[nRows-1-temp] = chars[i];
-			}
-			lists.add(cs);
-			index++;
-		}
-		for(int i=0;i<nRows;i++){
-			for(Character[] cs : lists){
-				if(cs[i] != null && cs[i] != ' '){
-					res += cs[i];
-				}
-			}
-		}
-		return res;
+
+    public ZigZagConversion() {
+        System.out.println(convert("A", 1));
+    }
+
+    public String convert(String s, int numRows) {
+        String res = "";
+        if(numRows == 1)
+            return s;
+        for (int i = 0; i < numRows; i++) {
+            int j = 0;
+            int index;
+            while (true) {
+                index = j * (numRows * 2 - 2) + i;
+                if (index >= s.length()) {
+                    break;
+                }
+                res += s.charAt(index);
+
+                if (i != 0 && i != numRows - 1) {
+                    index = (numRows - i - 1) * 2 + index;
+                    if (index >= s.length()) {
+                        break;
+                    }
+                    res += s.charAt(index);
+                }
+
+                j++;
+            }
+
+        }
+        return res;
     }
 }

@@ -1,4 +1,4 @@
-package kimchen.leetcode;
+package com.kimchen;
 
 import java.util.ArrayList;
 import java.util.List;
